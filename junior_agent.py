@@ -8,7 +8,7 @@ load_dotenv()
 # NOTE: In Codespaces, GITHUB_TOKEN is provided automatically!
 client = OpenAI(
     base_url="https://models.inference.ai.azure.com",
-    api_key=os.environ.get("GITHUB_TOKEN") 
+    api_key=os.environ.get("MY_GITHUB_MODELS_TOKEN") 
 )
 
 def junior_agent():
