@@ -123,13 +123,12 @@ When you are finished with your lab:
 
 Play with these sample questions with your Agent
 
-	• "I have a glass of salt water and a glass of sugar water, but I forgot which is which. How can I tell them apart without tasting them?"
-	• "Why does my hair stand up when I rub a balloon on my head, and does this work better if it’s raining outside?"
-	• "If I'm building a bridge out of spaghetti, should I use triangles or squares? Show me the math!"
-	• "I want to make a DIY battery using a lemon. What's the 'magic' happening inside the fruit?"
-  • "Can an AI ever actually 'understand' physics, or are you just guessing the next word?"
-	• "If I'm on a spaceship moving at the speed of light and I turn on a flashlight, what happens?"
+	1. I have a glass of salt water and a glass of sugar water, but I forgot which is which. How can I tell them apart without tasting them?
+	2. Why does my hair stand up when I rub a balloon on my head, and does this work better if it’s raining outside?
+	3. If I'm building a bridge out of spaghetti, should I use triangles or squares? Show me the math!
+	4. I want to make a DIY battery using a lemon. What's the 'magic' happening inside the fruit?
+    5. Can an AI ever actually 'understand' physics, or are you just guessing the next word?
+	6. If I'm on a spaceship moving at the speed of light and I turn on a flashlight, what happens?
+	7. Describe the periodic table as if it were a high school cafeteria. Who are the 'popular' elements and who are the 'loners'?
 
-"Describe the periodic table as if it were a high school cafeteria. Who are the 'popular' elements and who are the 'loners'?"<img width="1144" height="182" alt="image" src="https://github.com/user-attachments/assets/4e1cf1ef-e4f2-4338-bb65-5f7e98f0f01b" />
-
-<img width="1164" height="288" alt="image" src="https://github.com/user-attachments/assets/d66785da-c2df-4cf0-9512-bfa68eef056c" />
+	---
