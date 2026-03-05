@@ -84,6 +84,26 @@ python junior_agent.py
 
 ---
 
+## 🌟 Level 4: Boss Battle (Web UI & Superpowers)
+
+Ready to see true Agentic AI in action? Let's turn your terminal bot into a beautiful Web App that can use tools!
+
+1. Open the file named `agent_app.py`. Check out how we give the AI "tools" like a Calculator and Wikipedia Researcher!
+2. In your terminal, run the following command to install the required web tools:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Now, start the Web App by typing:
+   ```bash
+   streamlit run agent_app.py
+   ```
+4. A new browser tab will open! Try asking it:
+   * "Can you calculate 745 * 123 for me?"
+   * "Search Wikipedia for the history of the Apollo 11 mission."
+   * Watch the UI spin up as the Agent decides to use its tools!
+
+---
+
 ## 🧪 Testing the Agent (Sample Missions)
 
 Try these questions to see how your agent handles different STEM scenarios:
