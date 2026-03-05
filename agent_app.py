@@ -5,6 +5,10 @@ import json
 import wikipedia
 import ast
 import operator
+from dotenv import load_dotenv
+
+# Load local environment variables from .env if present
+load_dotenv()
 
 # Configure the Streamlit page
 st.set_page_config(page_title="STEM Lab Agent", page_icon="🔬", layout="centered")
