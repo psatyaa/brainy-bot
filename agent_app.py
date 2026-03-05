@@ -13,19 +13,39 @@ load_dotenv()
 # Configure the Streamlit page
 st.set_page_config(page_title="STEM Lab Agent", page_icon="🔬", layout="centered")
 
-# Inject Custom CSS for the STEM Watermark Background
-# We use a repeating SVG pattern encoded in base64 to create a subtle watermark of chemistry, books, and math symbols.
-page_bg_css = """
-<style>
-[data-testid="stAppViewContainer"] {
-    background-color: #f8fbff;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ctext x='10' y='30' font-size='20' opacity='0.05'%3E🔬%3C/text%3E%3Ctext x='70' y='50' font-size='20' opacity='0.05'%3E📚%3C/text%3E%3Ctext x='20' y='90' font-size='20' opacity='0.05'%3E📐%3C/text%3E%3Ctext x='80' y='100' font-size='20' opacity='0.05'%3E⚗️%3C/text%3E%3Ctext x='50' y='20' font-size='15' opacity='0.05'%3E∑%3C/text%3E%3Ctext x='100' y='40' font-size='15' opacity='0.05'%3E⚛️%3C/text%3E%3Ctext x='40' y='80' font-size='15' opacity='0.05'%3Eπ%3C/text%3E%3C/svg%3E");
-    background-size: 150px 150px;
-    background-repeat: repeat;
-    background-attachment: fixed;
-}
-</style>
-"""
+import base64
+
+# Function to encode local image for CSS background
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+# Try to load the newly generated watermark image from the assets folder
+watermark_path = "assets/stem_watermark.png"
+if os.path.exists(watermark_path):
+    img_base64 = get_base64_of_bin_file(watermark_path)
+    page_bg_css = f"""
+    <style>
+    [data-testid="stAppViewContainer"] {{
+        background-color: #ffffff;
+        background-image: url("data:image/png;base64,{img_base64}");
+        background-size: 80%; /* Large, distinct icons */
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+    }}
+    </style>
+    """
+else:
+    # Fallback to a solid color if the image is missing
+    page_bg_css = """
+    <style>
+    [data-testid="stAppViewContainer"] {
+        background-color: #ffffff;
+    }
+    </style>
+    """
 st.markdown(page_bg_css, unsafe_allow_html=True)
 
 st.title("🔬 Junior STEM Architect Lab")
