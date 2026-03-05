@@ -14,24 +14,15 @@ load_dotenv()
 st.set_page_config(page_title="STEM Lab Agent", page_icon="🔬", layout="centered")
 
 # Inject Custom CSS for the STEM Watermark Background
+# We use a repeating SVG pattern encoded in base64 to create a subtle watermark of chemistry, books, and math symbols.
 page_bg_css = """
 <style>
 [data-testid="stAppViewContainer"] {
-    background-image: url("https://images.unsplash.com/photo-1507413245164-6160d8298b31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80");
-    background-size: cover;
-    background-position: center;
+    background-color: #f8fbff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ctext x='10' y='30' font-size='20' opacity='0.05'%3E🔬%3C/text%3E%3Ctext x='70' y='50' font-size='20' opacity='0.05'%3E📚%3C/text%3E%3Ctext x='20' y='90' font-size='20' opacity='0.05'%3E📐%3C/text%3E%3Ctext x='80' y='100' font-size='20' opacity='0.05'%3E⚗️%3C/text%3E%3Ctext x='50' y='20' font-size='15' opacity='0.05'%3E∑%3C/text%3E%3Ctext x='100' y='40' font-size='15' opacity='0.05'%3E⚛️%3C/text%3E%3Ctext x='40' y='80' font-size='15' opacity='0.05'%3Eπ%3C/text%3E%3C/svg%3E");
+    background-size: 150px 150px;
+    background-repeat: repeat;
     background-attachment: fixed;
-    background-repeat: no-repeat;
-}
-/* Add a semi-transparent white overlay to ensure text is readable */
-[data-testid="stAppViewContainer"]::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(255, 255, 255, 0.90);
 }
 </style>
 """

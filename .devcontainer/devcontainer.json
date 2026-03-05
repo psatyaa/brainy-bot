@@ -5,6 +5,7 @@
         "ghcr.io/devcontainers/features/github-cli:1": {}
     },
     "postCreateCommand": "pip install -r requirements.txt",
+    "postAttachCommand": "streamlit run agent_app.py",
     "customizations": {
         "vscode": {
             "extensions": ["ms-python.python"]

@@ -93,11 +93,9 @@ Ready to see true Agentic AI in action? Let's turn your terminal bot into a beau
    ```bash
    pip install -r requirements.txt
    ```
-3. Now, start the Web App by typing:
-   ```bash
-   streamlit run agent_app.py
-   ```
-4. A new browser tab will open! Try asking it:
+3. **Watch the Magic Happen**: Because we've pre-configured your cloud environment, the Web App should **automatically open** in a new browser tab or inside VS Code!
+4. If it doesn't open automatically, look at the terminal at the bottom. The `streamlit run agent_app.py` command is already running! Just Command+Click (or Ctrl+Click) the `Local URL` link.
+5. Try asking it:
    * "Can you calculate 745 * 123 for me?"
    * "Search Wikipedia for the history of the Apollo 11 mission."
    * Watch the UI spin up as the Agent decides to use its tools!
