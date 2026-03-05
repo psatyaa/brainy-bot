@@ -96,9 +96,15 @@ if "messages" not in st.session_state:
 
 # Display existing chat history (skipping the hidden system message)
 for message in st.session_state.messages:
-    if message["role"] != "system" and message.get("content"):
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+    if isinstance(message, dict):
+        if message["role"] != "system" and message.get("content"):
+            with st.chat_message(message["role"]):
+                st.markdown(message["content"])
+    else:
+        # Handle ChatCompletionMessage object
+        if message.role != "system" and message.content:
+            with st.chat_message(message.role):
+                st.markdown(message.content)
 
 # --- Main Chat UI Loop ---
 if prompt := st.chat_input("Ask a science or math question!"):
