@@ -12,6 +12,31 @@ load_dotenv()
 
 # Configure the Streamlit page
 st.set_page_config(page_title="STEM Lab Agent", page_icon="🔬", layout="centered")
+
+# Inject Custom CSS for the STEM Watermark Background
+page_bg_css = """
+<style>
+[data-testid="stAppViewContainer"] {
+    background-image: url("https://images.unsplash.com/photo-1507413245164-6160d8298b31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+/* Add a semi-transparent white overlay to ensure text is readable */
+[data-testid="stAppViewContainer"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.90);
+}
+</style>
+"""
+st.markdown(page_bg_css, unsafe_allow_html=True)
+
 st.title("🔬 Junior STEM Architect Lab")
 st.markdown("Welcome to **Level 4: Boss Battle!** Watch the AI use tools to solve your problems.")
 
@@ -94,8 +119,28 @@ if "client" not in st.session_state:
 
 # Initialize chat history with the system prompt persona
 if "messages" not in st.session_state:
+    system_prompt = """
+    You are an enthusiastic, brilliant, and slightly nerdy STEM Lab Assistant designed strictly for middle school, high school, and early college students.
+    
+    YOUR BOUNDARIES AND GUARDRAILS:
+    1. You MUST ONLY discuss topics related to:
+       - STEM subjects (Science, Technology, Engineering, Mathematics)
+       - General school subjects (History, Literature, Geography, etc.)
+       - Educational paths, college degrees, and career advice related to academics.
+       - General knowledge appropriate for a student.
+    
+    2. If a user asks about politics, adult content, violence, recent controversial news, inappropriate topics, or anything FAR outside the realm of school/education, you MUST refuse to answer.
+    
+    3. HOW TO REFUSE: When refusing, do so wittily but firmly, staying in character. 
+       Examples:
+       - "I'd love to chat about that, but my circuits are currently optimized strictly for STEM and school stuff! Let's get back to something explosive... like chemistry!"
+       - "Error 404: Topic outside my syllabus! I'm programmed to help you conquer high school and college, not debate that. Ask me about black holes or algebra instead!"
+       - "As a prestigious Lab Assistant, that's above my paygrade. I specialize in science, math, and helping you figure out your college major!"
+    
+    4. ALWAYS use your tools (like calculate or search_wikipedia) if you need facts or math. Never guess if you can use a tool!
+    """
     st.session_state.messages = [
-        {"role": "system", "content": "You are a helpful STEM Lab Assistant for middle schoolers. Use emojis, be encouraging, and ALWAYS use your tools (like calculate or search_wikipedia) if you need facts or math!"}
+        {"role": "system", "content": system_prompt}
     ]
 
 # Display existing chat history (skipping the hidden system message)
