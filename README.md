@@ -2,13 +2,15 @@
 
 ├── agent_app.py          # The Streamlit web app with AI agent
 
-├── instructions.md       # Additional instructions
+├── instructions.md       # Additional instructions (see below for setup steps)
 
-├── README.md             # This file
+├── README.md             # This file (overview only)
 
 ├── requirements.txt      # List of Python packages needed
 
 └── assets/               # Folder for images and assets
+
+> For full step‑by‑step lab setup and student guidance, please refer to `instructions.md`.
 
 
 # 🧪 STEM AI Agent: Junior Architect Lab
@@ -36,9 +38,32 @@ In the professional world, AI is moving from "Chatbots" (which just talk) to **"
 * A web browser (Chrome, Edge, or Safari).
 * **No coding experience required!** We will guide you through the logic.
 
+## 🏠 Running locally on your machine?
+
+You can run the app entirely on your own computer instead of using Codespaces. Here’s how:
+
+1. (Optional) create and activate a Python virtual environment:
+    ```bash
+    python -m venv .venv
+    source .venv/bin/activate   # macOS/Linux; on Windows use `.venv\Scripts\activate`
+    ```
+2. Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+3. Ensure you have a valid GitHub Models token in the `MY_GITHUB_MODELS_TOKEN` environment variable (or drop it in a local `.env` file).
+4. Start the Streamlit app:
+    ```bash
+    streamlit run agent_app.py
+    ```
+5. Click the `Local URL` printed by Streamlit to open the chat UI in your browser.
+
+This mirrors the cloud workflow and is useful for development or offline demos.
+
+
 ---
 
-## 🚀 Step-by-Step Instructions
+## 🚀 Step-by-Step Instructions for Cloud Deployment
 
 ### Level 1: Get Your AI "Key" 🔑
 

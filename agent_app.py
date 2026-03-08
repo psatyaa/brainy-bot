@@ -55,10 +55,18 @@ st.markdown("Welcome to **Level 4: Boss Battle!** Watch the AI use tools to solv
 
 # Superpower 1: Math Calculator
 def calculate(expression: str) -> str:
-    """A tool to safely evaluate math expressions."""
+    """A tool to safely evaluate math expressions.
+
+    Supports basic arithmetic plus functions from the math module (e.g. `sqrt`,
+    `sin`, `log`).  This keeps the prompts flexible while still avoiding unsafe
+    eval usage.
+    """
     try:
-        # A simple and safe evaluator for basic math (not for production, but great for learning)
-        return str(eval(expression, {"__builtins__": None}, {}))
+        import math
+        # expose math functions but no builtins
+        safe_globals = {"__builtins__": None}
+        safe_locals = {name: getattr(math, name) for name in dir(math) if not name.startswith("__")}
+        return str(eval(expression, safe_globals, safe_locals))
     except Exception as e:
         return f"Error in math calculation: {e}"
 
@@ -166,8 +174,9 @@ for message in st.session_state.messages:
             with st.chat_message(message.role):
                 st.markdown(message.content)
 
-# --- Main Chat UI Loop ---
-if prompt := st.chat_input("Ask a science or math question!"):
+# --- Helper to process a prompt uniformly -----------------------------
+def process_prompt(prompt: str):
+    """Send a user prompt through the agent loop (used by chat input or sidebar buttons)."""
     # 1. Add user message to state and display it
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
@@ -182,31 +191,31 @@ if prompt := st.chat_input("Ask a science or math question!"):
                 tools=tools, # 👈 We give the AI the tools here!
                 tool_choice="auto" # Let the AI decide if it needs a tool
             )
-            
+
             response_message = response.choices[0].message
             st.session_state.messages.append(response_message)
-            
+
             # 3. Did the AI decide to use a tool? (The "Action" step)
             if response_message.tool_calls:
                 for tool_call in response_message.tool_calls:
                     function_name = tool_call.function.name
                     function_to_call = available_functions[function_name]
                     function_args = json.loads(tool_call.function.arguments)
-                    
+
                     # 🚀 The "WOW" Moment: Show the audience exactly what the AI is doing
                     ui_message = f"🧮 Calculating: `{function_args.get('expression')}`" if function_name == "calculate" else f"📖 Searching Wikipedia for: `{function_args.get('query')}`"
-                    
+
                     with st.status(f"🛠️ Agent decided to use a tool: **{function_name}**...", expanded=True):
                         st.write(ui_message)
-                        
+
                         # Actually run the python function
                         if function_name == "calculate":
                             function_response = function_to_call(function_args.get("expression"))
                         elif function_name == "search_wikipedia":
                             function_response = function_to_call(function_args.get("query"))
-                            
+
                         st.success(f"Tool returned: {function_response}")
-                    
+
                     # Give the tool's result back to the AI
                     st.session_state.messages.append(
                         {
@@ -216,7 +225,7 @@ if prompt := st.chat_input("Ask a science or math question!"):
                             "content": function_response,
                         }
                     )
-                
+
                 # 4. Now that the AI has the facts, ask it to form a final answer
                 with st.spinner("🧠 Formulating final answer based on data..."):
                     second_response = st.session_state.client.chat.completions.create(
@@ -226,8 +235,42 @@ if prompt := st.chat_input("Ask a science or math question!"):
                     final_reply = second_response.choices[0].message.content
                     st.markdown(final_reply)
                     st.session_state.messages.append({"role": "assistant", "content": final_reply})
-            
+
             else:
                 # Normal chat response (AI didn't need a tool)
                 final_reply = response_message.content
                 st.markdown(final_reply)
+
+# --- Sidebar with sample questions ------------------------------------
+sample_questions = [
+    "I have a glass of salt water and a glass of sugar water, but I forgot which is which. How can I tell them apart without tasting them?",
+    "Why does my hair stand up when I rub a balloon on my head, and does this work better if it’s raining outside?",
+    "If I'm building a bridge out of spaghetti, should I use triangles or squares? Show me the math!",
+    "I want to make a DIY battery using a lemon. What's the 'magic' happening inside the fruit?",
+    "Can an AI ever actually 'understand' physics, or are you just guessing the next word?",
+    "If I'm on a spaceship moving at the speed of light and I turn on a flashlight, what happens?",
+    "Describe the periodic table as if it were a high school cafeteria. Who are the 'popular' elements and who are the 'loners'?",
+]
+
+st.sidebar.header("Sample Questions")
+for idx, q in enumerate(sample_questions):
+    if st.sidebar.button(q, key=f"sample_{idx}"):
+        process_prompt(q)
+
+# fun superpower-specific prompts
+superpower_questions = [
+    "What's 12 * 8 + 5? (Use your calculator superpower!)",
+    "Explain the concept of gravity in two sentences.",
+    "Search Wikipedia for 'photosynthesis' and give me a quick summary.",
+    "Calculate the square root of 144.",
+    "Tell me a fun fact about space from Wikipedia.",
+    "If I have 7 bananas and eat 2, how many are left?",
+]
+st.sidebar.header("Superpower Test Questions")
+for idx, q in enumerate(superpower_questions):
+    if st.sidebar.button(q, key=f"power_{idx}"):
+        process_prompt(q)
+
+# --- Main Chat UI Loop ---
+if prompt := st.chat_input("Ask a science or math question!"):
+    process_prompt(prompt)
