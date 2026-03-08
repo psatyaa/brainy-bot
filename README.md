@@ -1,14 +1,14 @@
 # brainy-bot
 
-├── .devcontainer/
+├── agent_app.py          # The Streamlit web app with AI agent
 
-│   └── devcontainer.json    # The "Magic" that sets up the environment
+├── instructions.md       # Additional instructions
 
-├── junior_agent.py          # The core AI Agent code
+├── README.md             # This file
 
-├── requirements.txt         # List of tools the code needs
+├── requirements.txt      # List of Python packages needed
 
-└── .env                     # (DO NOT PUSH THIS) Your API Keys
+└── assets/               # Folder for images and assets
 
 
 # 🧪 STEM AI Agent: Junior Architect Lab
@@ -71,16 +71,14 @@ To power the AI's brain, you need a Personal Access Token (PAT).
 
 Once your cloud computer (Codespace) loads:
 
-1. Open the file named `junior_agent.py`.
+1. Open the file named `agent_app.py`.
 2. Look for the **"System Message"** section and give your agent a personality!
 3. In the terminal window at the bottom, type the following and press Enter:
 ```bash
-python junior_agent.py
-
+streamlit run agent_app.py
 ```
 
-
-4. If you see `🚀 Agent Online!`, you have successfully deployed your AI!
+4. If you see the web app open, you have successfully deployed your AI!
 
 ---
 
