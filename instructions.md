@@ -18,23 +18,20 @@ Before we build, we need a place to store our code. We are going to use **GitHub
 
 *(If you already have a GitHub account, just click **Sign In**!)*
 
-![GitHub Sign Up Page Placeholder](https://docs.github.com/assets/cb-103133/mw-1440/images/help/homepage/login-or-signup.webp)
-*(Teacher: Insert screenshot of GitHub homepage Sign Up button)*
-
 ---
 
 ## Part 2: Copying the Blueprint (Forking)
 
 We already wrote the base code for you. You just need to copy it to your new account!
 
-1. Open this link: **[Link to Your Repository Here]**
+1. Open this link: [**\[Brainy-bot\]**](https://github.com/psatyaa/brainy-bot)
 2. In the top right corner of the page, click the button that says **Fork**. 
 3. Click the green **Create Fork** button. 
 
 🎉 Boom! You now have your very own copy of the code!
 
-![Fork Button Placeholder](https://docs.github.com/assets/cb-68641/mw-1440/images/help/repository/fork_button.webp)
-*(Teacher: Insert screenshot highlighting the Fork button)*
+![Fork Button Placeholder](/assets/Fork.png)
+
 
 ---
 
@@ -57,8 +54,7 @@ To make the AI smart, we need to rent a mini-brain from the cloud. We do this us
 
 🛑 **STOP!** You will see a long code that looks like `github_pat_xxxxxxx`. **Copy this code right now.** Once you leave this page, it disappears forever!
 
-![Copying PAT Placeholder](https://docs.github.com/assets/cb-103133/mw-1440/images/help/settings/personal_access_tokens_fine_grained_copy.webp)
-*(Teacher: Insert screenshot showing the copy button for the new PAT)*
+![Copying PAT Placeholder](/assets/Brain_Key.png)
 
 ### Step 2: Hide the Key in the Vault
 We need to hide this key in your project so only your cloud computer can see it.
@@ -71,8 +67,8 @@ We need to hide this key in your project so only your cloud computer can see it.
 6. In the **Secret** box, paste your long key that you copied earlier.
 7. Click **Add secret**.
 
-![Adding Secret Placeholder](https://docs.github.com/assets/cb-103133/mw-1440/images/help/settings/secrets-add.webp)
-*(Teacher: Insert screenshot showing the New Repository Secret form)*
+![Adding Secret Placeholder](/assets/Token.png)
+
 
 ---
 
@@ -87,8 +83,8 @@ Now we press the magic button that builds a computer for you in the cloud.
 
 A new tab will open in your browser, and you will see a computer screen starting up. Wait about 30-60 seconds for it to finish loading!
 
-![Create Codespace Placeholder](https://docs.github.com/assets/cb-103133/mw-1440/images/help/codespaces/new-codespace-button.webp)
-*(Teacher: Insert screenshot highlighting the Create Codespace button)*
+![Create Codespace Placeholder](/assets/codespace.png)
+
 
 ---
 
@@ -101,10 +97,22 @@ Because you set everything up perfectly, the magic happens automatically.
 3. You will see a blue link that says something like `Local URL: http://localhost:8501`. 
 4. **Hover your mouse** over that link, hold down the `Ctrl` key (or `Command` on Mac), and **click on it!**
 
-![Clicking Local URL Placeholder](https://docs.github.com/assets/cb-102148/mw-1440/images/help/codespaces/forwarded-ports-link.webp)
-*(Teacher: Insert screenshot showing the Streamlit running message and hovering over the link)*
+![Clicking Local URL Placeholder](/assets/Codespace_Terminal.png)
+
 
 A new tab will open, and you will see your Beautiful STEM Lab web app with a cool science watermark in the background!
+
+## Sample Questions
+
+Play with these sample questions with your Agent
+
+	1. I have a glass of salt water and a glass of sugar water, but I forgot which is which. How can I tell them apart without tasting them?
+	2. Why does my hair stand up when I rub a balloon on my head, and does this work better if it’s raining outside?
+	3. If I'm building a bridge out of spaghetti, should I use triangles or squares? Show me the math!
+	4. I want to make a DIY battery using a lemon. What's the 'magic' happening inside the fruit?
+    5. Can an AI ever actually 'understand' physics, or are you just guessing the next word?
+	6. If I'm on a spaceship moving at the speed of light and I turn on a flashlight, what happens?
+	7. Describe the periodic table as if it were a high school cafeteria. Who are the 'popular' elements and who are the 'loners'?
 
 ### Test the Superpowers!
 
@@ -113,4 +121,14 @@ Your AI has special tools it can use! Try typing these into the chat:
 * "Search Wikipedia for the history of the Apollo 11 mission." *(Watch it search the internet!)*
 * "Who is the President?" *(Watch it wittily refuse because it's only allowed to talk about Science and Math!)*
 
+Once you are done with your Lab, make sure you delete the codespace environment. Following the screenshot to tear down.
+
+![Clicking Local URL Placeholder](/assets/Delete_CodeSpace.png)
+
 **Congratulations! You are officially an AI Architect! 🎉**
+
+Questions or Curios? You can connect with me on LinkedIn by Scanning this QR Code or Link
+
+[LinkedIn](https://www.linkedin.com/in/psatyaa/)
+
+![Clicking Local URL Placeholder](/assets/LinkedIn.jpg)
