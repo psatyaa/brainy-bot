@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Configure the Streamlit page
-st.set_page_config(page_title="STEM Lab Agent", page_icon="🔬", layout="centered")
+st.set_page_config(page_title="Brainy Bot Lab Agent", page_icon="🔬", layout="centered")
 
 import base64
 
